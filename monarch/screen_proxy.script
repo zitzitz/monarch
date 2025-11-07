@@ -2,6 +2,7 @@ local monarch
 
 go.property("screen_proxy", msg.url("#collectionproxy"))
 go.property("screen_id", hash("UNIQUE ID HERE"))
+go.property("liveupdate_content", hash(""))
 go.property("popup", false)
 go.property("popup_on_popup", false)
 go.property("timestep_below_popup", 1)
@@ -30,6 +31,7 @@ function init(self)
 		screen_keeps_input_focus_when_below_popup = self.screen_keeps_input_focus_when_below_popup,
 		others_keep_input_focus_when_below_screen = self.others_keep_input_focus_when_below_screen,
 		auto_preload = self.preload,
+		liveupdate_content = self.liveupdate_content
 	}
 
 	monarch.register_proxy(self.screen_id, self.screen_proxy, settings)

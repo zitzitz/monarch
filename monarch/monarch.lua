@@ -263,6 +263,7 @@ local function register(id, settings)
 		screen_keeps_input_focus_when_below_popup = settings and settings.screen_keeps_input_focus_when_below_popup or false,
 		others_keep_input_focus_when_below_screen = settings and settings.others_keep_input_focus_when_below_screen or false,
 		preload_listeners = {},
+		liveupdate_content = settings and settings.liveupdate_content
 	}
 	return screens[id]
 end
@@ -1411,5 +1412,13 @@ function M.queue_size()
 	return #queue
 end
 
+-- @param id (string|hash)
+-- @return string liveupdate content name for mount
+function M.get_liveupdate_content_name(id)
+	assert(id, "You must provide a screen id")
+	id = tohash(id)
+	assert(screens[id], ("There is no screen registered with id %s"):format(tostring(id)))
+	return screens[id].liveupdate_content
+end
 
 return M
